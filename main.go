@@ -75,11 +75,68 @@ func PostStudent(ctx *gofr.Context, student Student) (Student, error) {
 	return resp, nil
 }
 
+func DeleteStudentHandler (ctx *gofr.Context) (interface{}, error) {
+	name := ctx.PathParam("name")
+	if name == "" {
+		return nil, errors.MissingParam{Param: []string{"id"}}
+	}
+
+	if err := DeleteStudent(ctx, name); err != nil {
+		return nil, err
+	}
+
+	return "Deleted successfully", nil
+}
+
+func DeleteStudent(ctx *gofr.Context, name string) error {
+	_, err := ctx.DB().ExecContext(ctx, "DELETE FROM students where name=?", name)
+	if err != nil {
+		return errors.DB{Err: err}
+	}
+
+	return nil
+}
+
+func UpdateStudentHandler (ctx *gofr.Context) (interface{}, error) {
+	name := ctx.PathParam("name")
+	if name == "" {
+		return nil, errors.MissingParam{Param: []string{"name"}}
+	}
+
+	var student Student
+	if err := ctx.Bind(&student); err != nil {
+		ctx.Logger.Errorf("error in binding: %v", err)
+		return nil, errors.InvalidParam{Param: []string{"body"}}
+	}
+
+	student.Name = name
+
+	resp, err := UpdateStudent(ctx, student)
+	if err != nil {
+		return nil, err
+	}
+
+	return resp, nil
+}
+
+func UpdateStudent(ctx *gofr.Context, student Student) (Student, error) {
+	_, err := ctx.DB().ExecContext(ctx, "UPDATE students SET name=?,class=? WHERE name=?",
+		student.Name, student.Class, student.Name)
+	if err != nil {
+		return Student{}, errors.DB{Err: err}
+	}
+
+	return student, nil
+}
+
+
 func main() {
     app := gofr.New()
 
 	app.GET("/students/{name}", GetStudentHandler)
 	app.POST("/students", PostStudentHandler)
+	app.DELETE("/students/{name}", DeleteStudentHandler)
+	app.PUT("/students/{name}", UpdateStudentHandler)
 
 	// starting the server on a custom port
 	app.Server.HTTP.Port = 9092

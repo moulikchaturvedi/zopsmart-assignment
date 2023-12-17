@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "919e27a6-48e3-4ec0-9ddd-d40f3fafb4a8",
+		"name": "ZopsmartAssignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16222827"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Moulik\",\n  \"class\": \"Seventh\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9092/students",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9092/students/Moulik",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"students",
+						"Moulik"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Moulik\",\n  \"class\": \"Tenth\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9092/students/Moulik",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"students",
+						"Moulik"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:9092/students/Moulik",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"students",
+						"Moulik"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

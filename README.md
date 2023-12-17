@@ -11,7 +11,8 @@
 - Created the file `main.go`, with basic configuration (including GoFR).
 - For necessary libraries, `go mod tidy`.
 - `docker run --name gofr-mysql -e MYSQL_ROOT_PASSWORD=password -p 2001:3306 -d mysql/mysql-server` to start the mysql docker server.
-- Create a database and table on the docker server. `myysql -u root -p password` `CREATE DATABASE Students;` and `CREATE TABLE students (id int auto_increment, name varchar(255), class varchar(255), PRIMARY KEY (id));`. Created Dummy Data, `INSERT INTO students (name, class) VALUES ("moulik","fourth");`
+- Create a database and table on the docker server. `myysql -u root -p password` `CREATE DATABASE Students;` and `CREATE TABLE students (id int auto_increment, name varchar(255), class varchar(255), PRIMARY KEY (id));`. Created Dummy Data, `INSERT INTO students (name, class) VALUES ("moulik","fourth");`.
+- Unit Testing file is under development.
 
 ## To run
 

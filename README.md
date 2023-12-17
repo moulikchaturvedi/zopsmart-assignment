@@ -1,4 +1,6 @@
-# zopsmart-assignment
+# ZopSmart Assignment - A School Student Database
+
+This repository contains the assignment submission for the ZopSmart hiring drive in JUIT, Solan. It contians the implementation of a simple CRUD API, using the [GoFR](www.gofr.dev/) library.
 
 ## Requriements
 
@@ -12,7 +14,11 @@
 - For necessary libraries, `go mod tidy`.
 - `docker run --name gofr-mysql -e MYSQL_ROOT_PASSWORD=password -p 2001:3306 -d mysql/mysql-server` to start the mysql docker server.
 - Create a database and table on the docker server. `myysql -u root -p password` `CREATE DATABASE Students;` and `CREATE TABLE students (id int auto_increment, name varchar(255), class varchar(255), PRIMARY KEY (id));`. Created Dummy Data, `INSERT INTO students (name, class) VALUES ("moulik","fourth");`.
+- Learned about Handlers and how they work in Go and GoFR.
+- Explored GoFR documentations, which helped a lot in making of this project.
+- CRUD operations were added.
 - Unit Testing file is under development.
+- Postman Collection has been attached in the respective directory.
 
 ## To run
 
